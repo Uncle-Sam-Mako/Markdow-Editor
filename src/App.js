@@ -2,17 +2,23 @@ import React,{Component} from 'react';
 import './App.css';
 import {sampleText} from './sampleText';
 import marked from 'marked';
-import DOMPurify from 'dompurify'
+import DOMPurify from 'dompurify';
 
 class App extends Component {
   state = {
     value : sampleText
   }
   componentDidMount(){
-      console.log('Mount');
+      const localValue = localStorage.getItem('text');
+      if(localValue){
+        this.setState({value : localValue});
+      }else{
+        this.setState({value : sampleText});
+      }
   }
   componentDidUpdate(){
-      console.log("Update");
+      const { value } = this.state;
+      localStorage.setItem('text', value);
   }
   renderText = text => {
     let purifiedText = DOMPurify.sanitize(text);
