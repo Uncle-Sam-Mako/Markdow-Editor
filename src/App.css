@@ -9,6 +9,10 @@
 html, body{
   font-family: 'Lato', sans-serif;
 }
+.app-title{
+  
+  animation: chute .6s ease;
+}
 .form-control:focus{
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1) !important;
 }
@@ -17,4 +21,11 @@ html, body{
   padding: 5px;
   border-radius: 15px;
   color: var(--color-one);
+}
+
+@keyframes chute {
+  0%{
+    transform: translateY(-150%);
+    opacity: 0;
+  }
 }
