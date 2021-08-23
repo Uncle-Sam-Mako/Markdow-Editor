@@ -9,6 +9,9 @@
 html, body{
   font-family: 'Lato', sans-serif;
 }
+.form-control:focus{
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1) !important;
+}
 .app-title::first-letter{
   background: var(--color-two);
   padding: 5px;
