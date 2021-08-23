@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
+import {sampleText} from './sampleText'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    value : sampleText
+  }
+  handleChange = e => {
+    this.setState({value : e.target.value})
+  }
+  render(){
+    return (
+      <div className="container">
+        <h1 style={{fontWeight:'900'}} className="text-center my-5 app-title">Markdown-Editor</h1>
+        <div className="row">
+          <div className="col-sm-6">
+            <textarea onChange={this.handleChange} value={this.state.value} className="form-control" name="markdown-side" id="markdown-side" cols="30" rows="35"></textarea>
+          </div>
+          <div className="col-sm-6">{sampleText}</div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
