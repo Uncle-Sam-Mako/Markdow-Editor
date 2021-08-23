@@ -1,15 +1,22 @@
 import React,{Component} from 'react';
-import ReactDOM from 'react-dom';
 import './App.css';
 import {sampleText} from './sampleText';
 import marked from 'marked';
+import DOMPurify from 'dompurify'
 
 class App extends Component {
   state = {
     value : sampleText
   }
+  componentDidMount(){
+      console.log('Mount');
+  }
+  componentDidUpdate(){
+      console.log("Update");
+  }
   renderText = text => {
-    const __html = marked(text, {sanitize:true});
+    let purifiedText = DOMPurify.sanitize(text);
+    const __html = marked(purifiedText);
     return { __html }
   }
   handleChange = e => {
